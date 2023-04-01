@@ -37,5 +37,40 @@ public class BinaryTreeCreation {
         inOrderTraversal(root.right);
     }
 
+    // pre order traversal nlr
+    void preOrderTraversal(Node root){
+        if(root == null) return;
+        System.out.println(root.data); // node
+        preOrderTraversal(root.left);  // left
+        preOrderTraversal(root.right); // right
+    }
+
+    //post order traversal lrn
+    void postOrderTraversal(Node root){
+        if(root == null) return;
+        System.out.println(root.data); // node
+        preOrderTraversal(root.right); // right
+        preOrderTraversal(root.left);  // left
+
+    }
+
+    //Height of a binary tree
+    int heightOfABinaryTree(Node root){
+        if(root == null) return 0;
+        int lh = heightOfABinaryTree(root.left);
+        int rh = heightOfABinaryTree(root.right);
+        return Math.max(lh,rh) +1;
+    }
+
+    void printNodesAtKDistance(Node root , int k ){
+        if(root == null) return;
+        if(k == 0 ){
+            System.out.println(root.data);
+            return;
+        }
+        printNodesAtKDistance(root.left , k-1);
+        printNodesAtKDistance(root.right, k-1);
+    }
+
 
 }
